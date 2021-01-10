@@ -22,6 +22,7 @@ IMPORT BOOL CALLBACK CenterTextA( HDC, PRECT, PCSTR );
 #endif
 #pragma endregion
 
+
 LRESULT CALLBACK WndProc( HWND hwnd,
 	UINT message,
 	WPARAM wParam,
@@ -75,13 +76,13 @@ int WINAPI WinMain( HINSTANCE hInst,
 	wndClass.cbClsExtra = 0;
 	wndClass.cbWndExtra = 0;
 	wndClass.hInstance = hInst;
-	wndClass.hIcon = LoadIcon( nullptr, IDI_APPLICATION );
-	wndClass.hCursor = LoadCursor( nullptr, IDC_ARROW );
+	wndClass.hIcon = LoadIconW( nullptr, IDI_APPLICATION );
+	wndClass.hCursor = LoadCursorW( nullptr, IDC_ARROW );
 	wndClass.hbrBackground = (HBRUSH)GetStockObject( WHITE_BRUSH );
 	wndClass.lpszMenuName = nullptr;
 	wndClass.lpszClassName = szClassName;
 
-	if ( !RegisterClass( &wndClass ) )
+	if ( !RegisterClassW( &wndClass ) )
 	{
 		MessageBox( nullptr,
 			TEXT("This program requires Windows NT!"),
@@ -90,7 +91,7 @@ int WINAPI WinMain( HINSTANCE hInst,
 		return 0;
 	}
 
-	hwnd = CreateWindow( szClassName,
+	hwnd = CreateWindowW( szClassName,
 		TEXT("DLL Demo Program"),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
@@ -107,14 +108,15 @@ int WINAPI WinMain( HINSTANCE hInst,
 	UpdateWindow( hwnd );
 
 	// on WM_QUIT GetMessage() returns 0
-	while ( GetMessage( &msg,
+	// or use PeekMessage
+	while ( GetMessageW( &msg,
 		nullptr,
 		0,
 		0 ) )
 	{
 		TranslateMessage( &msg );
-		DispatchMessage( &msg );
+		DispatchMessageW( &msg );
 	}
 
-	return msg.wParam;
+	return (int) msg.wParam;
 }
