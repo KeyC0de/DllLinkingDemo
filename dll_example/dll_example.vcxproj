@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dll_example.h" />
+    <ClInclude Include="winner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dll_example.cpp" />

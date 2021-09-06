@@ -1,4 +1,4 @@
-#include <Windows.h>
+#include "winner.h"
 
 #pragma comment( lib, "dll_example.lib" )
 

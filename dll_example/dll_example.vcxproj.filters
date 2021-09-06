@@ -23,5 +23,8 @@
     <ClInclude Include="dll_example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="winner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
